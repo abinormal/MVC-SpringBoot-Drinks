@@ -14,7 +14,7 @@ public class CoffeeController {
     }
 
     @GetMapping(value = "/coffee")
-    public Coffee coffee(@RequestParam(value="name", defaultValue = "latte") String name) {
+    public Coffee coffee(@RequestParam(value="name", defaultValue = "Flat White") String name) {
         return new Coffee(name, 1);
     }
 }
