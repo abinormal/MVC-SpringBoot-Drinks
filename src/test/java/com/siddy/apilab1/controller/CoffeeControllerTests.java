@@ -10,17 +10,18 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @AutoConfigureMockMvc // Enable and configure auto-config of MockMVC
 @SpringBootTest
-public class HomeControllerTests {
+public class CoffeeControllerTests {
 
     @Autowired
     private MockMvc mockMvcController;
 
     @Test
-    public void testGetHome() throws Exception{
-        String expectedContent = "Welcome to the Drinks API!";
+    public void testCoffeeLover() throws Exception{
+        String expectedContent = "I love coffee!!";
 
-        this.mockMvcController.perform(MockMvcRequestBuilders.get("/"))
+        this.mockMvcController.perform(MockMvcRequestBuilders.get("/coffeelover"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(expectedContent));
+
     }
 }
