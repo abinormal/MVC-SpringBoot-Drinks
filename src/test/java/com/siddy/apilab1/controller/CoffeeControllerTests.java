@@ -24,4 +24,24 @@ public class CoffeeControllerTests {
                 .andExpect(MockMvcResultMatchers.content().string(expectedContent));
 
     }
+
+    @Test
+    public void testCoffee() throws Exception {
+        int expectedId = 1;
+        String expectedCoffee = "latte";
+
+        this.mockMvcController.perform(MockMvcRequestBuilders.get("/coffee"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedCoffee));
+    }
+
+    @Test
+    public void testCoffeeFlatWhite() throws Exception {
+        int expectedId = 1;
+        String expectedCoffee = "Flat White";
+
+        this.mockMvcController.perform(MockMvcRequestBuilders.get("/coffee?name=Flat White"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedCoffee));
+    }
 }
